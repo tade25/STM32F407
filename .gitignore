@@ -1,0 +1,16 @@
+*.d
+*.o
+*.iex
+*.dep
+*.axf
+*.htm
+*.hex
+*np
+*.map
+*.sct
+*.scvd
+*.txt
+*uvguix*
+*uvoptx*
+*dbgconf*
+*.ini
