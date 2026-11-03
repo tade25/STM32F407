@@ -3,6 +3,7 @@
 #include "timer.h"
 #include "mcu.h"
 #include "delay.h"
+#include "pwm.h"
 
 #define RCC_AHB1ENR ((uint32_t*)(0x40023800 + 0x30))
 #define RCC_APB1ENR	((uint32_t*)(0x40023800 + 0x40))
@@ -17,10 +18,11 @@ int main(void)
 	*RCC_AHB1ENR = reg_value | (1 << 0);
 
 	reg_value = *RCC_APB1ENR;
-	*RCC_APB1ENR = reg_value | (1 << 4);
+	*RCC_APB1ENR = reg_value | (1 << 0)| (1 << 4);
 	
 	Delay_Init();
 	Led_Init();
+	PWM_Init();
 	
 	while(1) {
 		Led_Off();

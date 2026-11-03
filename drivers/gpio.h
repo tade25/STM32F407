@@ -65,13 +65,53 @@ typedef enum {
     GPIO_PUPD_PD   = 2,
 } GPIO_Pupd;
 
+typedef enum {
+    GPIO_AF_0 = 0,
+    GPIO_AF_1,
+    GPIO_AF_2,
+    GPIO_AF_3,
+    GPIO_AF_4,
+    GPIO_AF_5,
+    GPIO_AF_6,
+    GPIO_AF_7,
+    GPIO_AF_8,
+    GPIO_AF_9,
+    GPIO_AF_10,
+    GPIO_AF_11,
+    GPIO_AF_12,
+    GPIO_AF_13,
+    GPIO_AF_14,
+    GPIO_AF_15,
+    GPIO_AF_MAX,
+} GPIO_Af;
+
+typedef enum {
+    GPIO_PIN_0 = 0,
+    GPIO_PIN_1,
+    GPIO_PIN_2,
+    GPIO_PIN_3,
+    GPIO_PIN_4,
+    GPIO_PIN_5,
+    GPIO_PIN_6,
+    GPIO_PIN_7,
+    GPIO_PIN_8,
+    GPIO_PIN_9,
+    GPIO_PIN_10,
+    GPIO_PIN_11,
+    GPIO_PIN_12,
+    GPIO_PIN_13,
+    GPIO_PIN_14,
+    GPIO_PIN_15,
+    GPIO_PIN_MAX
+} GPIO_Pin;
+
 typedef struct {
     GPIO_Mode	Mode;
     GPIO_OType	OType;
     GPIO_Speed	Speed;
     GPIO_Pupd	PuPd;
-    uint8_t		Pin;
-	uint8_t		AF;
+    GPIO_Af		Af;
+    GPIO_Pin    Pin;
 }GPIO_InitTypeDef;
 
 extern void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* InitStruct);
