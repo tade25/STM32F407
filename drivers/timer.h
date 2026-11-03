@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #define TIM2_BASE	((uint32_t)0x40000000)
+#define TIM3_BASE	((uint32_t)0x40000400)
 #define TIM6_BASE	((uint32_t)0x40001000)
 
 typedef struct {
@@ -32,6 +33,7 @@ typedef struct {
 }TIM_TypeDef;
 
 #define TIM2	(TIM_TypeDef*)TIM2_BASE
+#define TIM3	(TIM_TypeDef*)TIM3_BASE
 #define TIM6	(TIM_TypeDef*)TIM6_BASE
 
 typedef struct {
@@ -43,7 +45,8 @@ typedef enum {
 	TIM_CH_1 = 0,
 	TIM_CH_2,
 	TIM_CH_3,
-	TIM_CH_4
+	TIM_CH_4,
+	TIM_CH_MAX
 } TIM_Channel;
 
 typedef enum {
@@ -79,6 +82,9 @@ static inline uint32_t TIM_GetCnt(TIM_TypeDef* TIMx)
 
 extern void TIM_Base_Init(TIM_TypeDef* TIMx, TIM_BaseConf* conf);
 extern void TIM_Ch_PwmInit(TIM_TypeDef* TIMx, TIM_PwmConf* conf);
+extern void TIM_SetAutoreload(TIM_TypeDef* TIMx, uint32_t autoreload);
+extern void TIM_PrescalerConfig(TIM_TypeDef* TIMx, uint16_t prescaler);
+extern void TIM_SetCompare(TIM_TypeDef* TIMx, TIM_Channel channel, uint32_t compare);
 extern void delay_us(uint32_t us);
 extern void delay_ms(uint32_t ms);
 

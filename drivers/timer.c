@@ -32,3 +32,24 @@ void TIM_Ch_PwmInit(TIM_TypeDef* TIMx, TIM_PwmConf* conf)
 	reg_val &= ~(0xF << (4 * conf->Channel));
 	TIMx->CCER = reg_val | (1 << (4 * conf->Channel)) | (conf->Polarity << (1 + 4 * conf->Channel));
 }
+
+void TIM_SetAutoreload(TIM_TypeDef* TIMx, uint32_t autoreload)
+{
+    TIMx->ARR = autoreload;
+}
+
+void TIM_PrescalerConfig(TIM_TypeDef* TIMx, uint16_t prescaler)
+{
+    TIMx->PSC = prescaler;
+}
+
+void TIM_SetCompare(TIM_TypeDef* TIMx, TIM_Channel channel, uint32_t compare)
+{
+	uint32_t* pCCR = 0;
+
+	if(channel >= TIM_CH_MAX)
+		return;
+	
+	pCCR = &TIMx->CCR1 + channel;
+    *pCCR = compare;
+}

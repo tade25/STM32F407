@@ -18,7 +18,7 @@ int main(void)
 	*RCC_AHB1ENR = reg_value | (1 << 0);
 
 	reg_value = *RCC_APB1ENR;
-	*RCC_APB1ENR = reg_value | (1 << 0)| (1 << 4);
+	*RCC_APB1ENR = reg_value | (1 << 0) | (1 << 1) | (1 << 4);
 	
 	Delay_Init();
 	Led_Init();
@@ -29,5 +29,6 @@ int main(void)
 		delay_ms(1000);
 		Led_On();
 		delay_ms(1000);
+		PWM_SetPeriodAndDuty(12800, 30);
 	}
 }
